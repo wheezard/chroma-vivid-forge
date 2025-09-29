@@ -1,13 +1,40 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from "react";
+import { WalletConnect } from "@/components/WalletConnect";
+import { PatientDashboard } from "@/components/PatientDashboard";
+import { ProviderDashboard } from "@/components/ProviderDashboard";
 
 const Index = () => {
+  const [connectedWallet, setConnectedWallet] = useState<{
+    address: string;
+    role: 'patient' | 'provider';
+  } | null>(null);
+
+  const handleWalletConnect = (address: string, role: 'patient' | 'provider') => {
+    setConnectedWallet({ address, role });
+  };
+
+  const handleDisconnect = () => {
+    setConnectedWallet(null);
+  };
+
+  if (!connectedWallet) {
+    return <WalletConnect onConnect={handleWalletConnect} />;
+  }
+
+  if (connectedWallet.role === 'patient') {
+    return (
+      <PatientDashboard 
+        walletAddress={connectedWallet.address}
+        onDisconnect={handleDisconnect}
+      />
+    );
+  }
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <ProviderDashboard 
+      walletAddress={connectedWallet.address}
+      onDisconnect={handleDisconnect}
+    />
   );
 };
 

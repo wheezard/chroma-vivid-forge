@@ -2,41 +2,57 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+/* AfriHealth Ledger Design System - Medical Professional with 3D Effects
+Strict black and green color scheme with transformative animations
 All colors MUST be HSL.
 */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Core Brand Colors - Medical Green & Black */
+    --medical-green: 168 71% 27%;        /* #0D7C66 - Primary brand */
+    --deep-green: 168 100% 15%;          /* #003D32 - Darker variant */
+    --bright-green: 150 100% 50%;        /* #00FF87 - Accent/CTA */
+    --soft-green: 168 71% 92%;           /* #E8F5F3 - Light backgrounds */
+    
+    /* Monochrome Scale */
+    --pure-black: 0 0% 0%;               /* #000000 - Text/borders */
+    --charcoal: 0 0% 8%;                 /* #141414 - Dark surfaces */
+    --steel: 0 0% 20%;                   /* #333333 - Medium grays */
+    --silver: 0 0% 60%;                  /* #999999 - Muted text */
+    --snow: 0 0% 97%;                    /* #F7F7F7 - Light surfaces */
+    --pure-white: 0 0% 100%;             /* #FFFFFF - Pure white */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Semantic Color System */
+    --background: var(--pure-white);
+    --foreground: var(--pure-black);
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --card: var(--pure-white);
+    --card-foreground: var(--pure-black);
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --popover: var(--pure-white);
+    --popover-foreground: var(--pure-black);
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --primary: var(--medical-green);
+    --primary-foreground: var(--pure-white);
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --secondary: var(--snow);
+    --secondary-foreground: var(--charcoal);
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --muted: var(--snow);
+    --muted-foreground: var(--silver);
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --accent: var(--bright-green);
+    --accent-foreground: var(--pure-black);
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: var(--pure-white);
 
-    --radius: 0.5rem;
+    --border: var(--snow);
+    --input: var(--snow);
+    --ring: var(--medical-green);
+
+    --radius: 8px;
 
     --sidebar-background: 0 0% 98%;
 
@@ -56,42 +72,60 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* Inverted Theme - Green dominant with white accents */
+    --background: var(--charcoal);
+    --foreground: var(--pure-white);
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: var(--pure-black);
+    --card-foreground: var(--pure-white);
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: var(--pure-black);
+    --popover-foreground: var(--pure-white);
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: var(--bright-green);
+    --primary-foreground: var(--pure-black);
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: var(--steel);
+    --secondary-foreground: var(--pure-white);
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: var(--steel);
+    --muted-foreground: var(--silver);
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: var(--medical-green);
+    --accent-foreground: var(--pure-white);
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: var(--pure-white);
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: var(--steel);
+    --input: var(--steel);
+    --ring: var(--bright-green);
+    
+    --sidebar-background: var(--pure-black);
+    --sidebar-foreground: var(--pure-white);
+    --sidebar-primary: var(--bright-green);
+    --sidebar-primary-foreground: var(--pure-black);
+    --sidebar-accent: var(--steel);
+    --sidebar-accent-foreground: var(--pure-white);
+    --sidebar-border: var(--steel);
+    --sidebar-ring: var(--bright-green);
   }
+
+    /* 3D Transform Variables */
+    --transform-perspective: 1000px;
+    --transform-rotate-x: 12deg;
+    --transform-rotate-y: 25deg;
+    --transform-scale-hover: 1.05;
+    --transform-translate-z: 20px;
+    
+    /* Animation Variables */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --animation-float: float 6s ease-in-out infinite;
+    
+    /* Typography Scale */
+    --font-family-display: 'Lora', serif;
+    --font-family-body: 'Nunito', sans-serif;
 }
 
 @layer base {
@@ -100,6 +134,145 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-body;
+    font-family: var(--font-family-body);
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-family-display);
+  }
+}
+
+/* 3D Effects and Transformative Animations */
+@layer components {
+  /* 3D Card Effects */
+  .card-3d {
+    perspective: var(--transform-perspective);
+    transform-style: preserve-3d;
+    transition: var(--transition-smooth);
+  }
+  
+  .card-3d:hover {
+    transform: rotateX(var(--transform-rotate-x)) rotateY(var(--transform-rotate-y)) scale(var(--transform-scale-hover));
+  }
+  
+  .card-float {
+    animation: var(--animation-float);
+    transform-style: preserve-3d;
+  }
+  
+  /* Floating Animation */
+  @keyframes float {
+    0%, 100% { 
+      transform: translateY(0px) translateZ(0px); 
+    }
+    50% { 
+      transform: translateY(-20px) translateZ(var(--transform-translate-z)); 
+    }
+  }
+  
+  /* 3D Button Effects */
+  .btn-3d {
+    transform-style: preserve-3d;
+    transition: var(--transition-smooth);
+    position: relative;
+  }
+  
+  .btn-3d::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform: translateZ(-4px);
+    background: inherit;
+    border-radius: inherit;
+    opacity: 0.7;
+  }
+  
+  .btn-3d:hover {
+    transform: translateY(-2px) rotateX(15deg);
+  }
+  
+  .btn-3d:active {
+    transform: translateY(2px) rotateX(-5deg);
+  }
+  
+  /* Medical Records Grid with 3D */
+  .records-grid {
+    perspective: var(--transform-perspective);
+    display: grid;
+    gap: 1.5rem;
+  }
+  
+  .record-card {
+    transform-style: preserve-3d;
+    transition: var(--transition-smooth);
+    cursor: pointer;
+  }
+  
+  .record-card:hover {
+    transform: rotateY(5deg) translateZ(10px);
+  }
+  
+  /* Transformative Layout Effects */
+  .hero-parallax {
+    transform-style: preserve-3d;
+    perspective: var(--transform-perspective);
+  }
+  
+  .parallax-layer {
+    transform-style: preserve-3d;
+    transition: var(--transition-smooth);
+  }
+  
+  /* Medical Animation Classes */
+  .pulse-medical {
+    animation: pulse-medical 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  @keyframes pulse-medical {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scale(1.05);
+    }
+  }
+  
+  /* Consent Flow Animations */
+  .consent-flow {
+    transform-style: preserve-3d;
+  }
+  
+  .consent-step {
+    transition: var(--transition-bounce);
+    transform-origin: center center;
+  }
+  
+  .consent-step.active {
+    transform: scale(1.1) rotateY(5deg);
+  }
+  
+  /* Blockchain Verification Effects */
+  .verification-badge {
+    transform-style: preserve-3d;
+    transition: var(--transition-smooth);
+  }
+  
+  .verification-badge.verified {
+    animation: verify-glow 2s ease-in-out infinite alternate;
+  }
+  
+  @keyframes verify-glow {
+    from {
+      transform: scale(1) rotateZ(0deg);
+    }
+    to {
+      transform: scale(1.05) rotateZ(2deg);
+    }
   }
 }

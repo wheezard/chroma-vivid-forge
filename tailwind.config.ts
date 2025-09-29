@@ -57,6 +57,17 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        /* AfriHealth Medical Colors */
+        medical: {
+          green: "hsl(var(--medical-green))",
+          deep: "hsl(var(--deep-green))",
+          bright: "hsl(var(--bright-green))",
+          soft: "hsl(var(--soft-green))",
+        },
+      },
+      fontFamily: {
+        display: ["Lora", "serif"],
+        body: ["Nunito", "sans-serif"],
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -80,10 +91,28 @@ export default {
             height: "0",
           },
         },
+        "float": {
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-20px)" },
+        },
+        "pulse-medical": {
+          "0%, 100%": { opacity: "1", transform: "scale(1)" },
+          "50%": { opacity: "0.8", transform: "scale(1.05)" },
+        },
+        "verify-glow": {
+          "from": { transform: "scale(1) rotateZ(0deg)" },
+          "to": { transform: "scale(1.05) rotateZ(2deg)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "float": "float 6s ease-in-out infinite",
+        "pulse-medical": "pulse-medical 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        "verify-glow": "verify-glow 2s ease-in-out infinite alternate",
+      },
+      perspective: {
+        '1000': '1000px',
       },
     },
   },
