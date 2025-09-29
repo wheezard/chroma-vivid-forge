@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { WalletConnect } from "@/components/WalletConnect";
+import { LandingPage } from "@/components/LandingPage";
 import { PatientDashboard } from "@/components/PatientDashboard";
 import { ProviderDashboard } from "@/components/ProviderDashboard";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 const Index = () => {
   const [connectedWallet, setConnectedWallet] = useState<{
@@ -17,24 +18,22 @@ const Index = () => {
     setConnectedWallet(null);
   };
 
-  if (!connectedWallet) {
-    return <WalletConnect onConnect={handleWalletConnect} />;
-  }
-
-  if (connectedWallet.role === 'patient') {
-    return (
-      <PatientDashboard 
-        walletAddress={connectedWallet.address}
-        onDisconnect={handleDisconnect}
-      />
-    );
-  }
-
   return (
-    <ProviderDashboard 
-      walletAddress={connectedWallet.address}
-      onDisconnect={handleDisconnect}
-    />
+    <ThemeProvider defaultTheme="system" storageKey="afrihealth-theme">
+      {!connectedWallet ? (
+        <LandingPage onRoleSelect={handleWalletConnect} />
+      ) : connectedWallet.role === 'patient' ? (
+        <PatientDashboard 
+          walletAddress={connectedWallet.address}
+          onDisconnect={handleDisconnect}
+        />
+      ) : (
+        <ProviderDashboard 
+          walletAddress={connectedWallet.address}
+          onDisconnect={handleDisconnect}
+        />
+      )}
+    </ThemeProvider>
   );
 };
 

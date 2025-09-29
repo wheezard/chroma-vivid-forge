@@ -1,6 +1,205 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  /* Light mode colors - Medical Green & Black theme */
+  --background: 0 0% 100%;
+  --foreground: 0 0% 0%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 0%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 0%;
+  --primary: 0 0% 0%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 0 0% 96%;
+  --secondary-foreground: 0 0% 0%;
+  --muted: 0 0% 96%;
+  --muted-foreground: 0 0% 45%;
+  --accent: 120 100% 25%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 0 0% 90%;
+  --input: 0 0% 90%;
+  --ring: 0 0% 0%;
+  --radius: 0.75rem;
+  
+  /* Medical color scheme */
+  --medical-green: 120 100% 25%;
+  --medical-bright: 120 100% 35%;
+  --medical-soft: 120 50% 85%;
+  --medical-deep: 120 100% 15%;
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, hsl(var(--medical-green)), hsl(var(--medical-bright)));
+  --gradient-soft: linear-gradient(180deg, hsl(var(--background)), hsl(var(--medical-soft) / 0.1));
+}
+
+.dark {
+  /* Dark mode colors - Inverted Medical Green & White theme */
+  --background: 0 0% 0%;
+  --foreground: 0 0% 100%;
+  --card: 0 0% 3%;
+  --card-foreground: 0 0% 100%;
+  --popover: 0 0% 3%;
+  --popover-foreground: 0 0% 100%;
+  --primary: 0 0% 100%;
+  --primary-foreground: 0 0% 0%;
+  --secondary: 0 0% 10%;
+  --secondary-foreground: 0 0% 100%;
+  --muted: 0 0% 10%;
+  --muted-foreground: 0 0% 65%;
+  --accent: 120 100% 40%;
+  --accent-foreground: 0 0% 0%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 0 0% 15%;
+  --input: 0 0% 15%;
+  --ring: 0 0% 100%;
+  
+  /* Medical color scheme for dark mode */
+  --medical-green: 120 100% 40%;
+  --medical-bright: 120 100% 50%;
+  --medical-soft: 120 30% 20%;
+  --medical-deep: 120 100% 60%;
+
+  /* Dark gradients */
+  --gradient-primary: linear-gradient(135deg, hsl(var(--medical-green)), hsl(var(--medical-bright)));
+  --gradient-soft: linear-gradient(180deg, hsl(var(--background)), hsl(var(--medical-soft) / 0.1));
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  font-family: 'Nunito Sans', system-ui, -apple-system, sans-serif;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-feature-settings: "rlig" 1, "calt" 1;
+}
+
+/* Typography */
+.font-display {
+  font-family: 'Lora', serif;
+}
+
+/* 3D Effects and Animations */
+.card-3d {
+  transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+  background: linear-gradient(145deg, 
+    hsl(var(--card) / 0.9), 
+    hsl(var(--card) / 0.7)
+  );
+  border: 1px solid hsl(var(--border) / 0.5);
+}
+
+.card-3d:hover {
+  transform: perspective(1000px) rotateX(2deg) rotateY(-2deg) translateY(-8px);
+  background: linear-gradient(145deg, 
+    hsl(var(--card)), 
+    hsl(var(--card) / 0.95)
+  );
+  border-color: hsl(var(--medical-green) / 0.3);
+}
+
+.card-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(1deg); }
+}
+
+.hero-parallax {
+  transform: perspective(1000px) rotateX(0deg);
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.parallax-layer {
+  transform: translateZ(50px) scale(0.95);
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+/* Hover effects */
+.hover-3d {
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.hover-3d:hover {
+  transform: perspective(1000px) rotateX(5deg) rotateY(5deg) translateZ(20px);
+}
+
+/* Interactive animations */
+@keyframes pulse-medical {
+  0%, 100% { 
+    box-shadow: 0 0 0 0 hsl(var(--medical-green) / 0.7);
+  }
+  70% { 
+    box-shadow: 0 0 0 20px hsl(var(--medical-green) / 0);
+  }
+}
+
+.pulse-medical {
+  animation: pulse-medical 2s infinite;
+}
+
+/* Smooth transitions for theme switching */
+* {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--medical-green));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--medical-bright));
+}
+
+/* Loading animations */
+@keyframes shimmer {
+  0% { background-position: -200px 0; }
+  100% { background-position: calc(200px + 100%) 0; }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, 
+    hsl(var(--muted)) 0%, 
+    hsl(var(--muted-foreground) / 0.1) 50%, 
+    hsl(var(--muted)) 100%
+  );
+  background-size: 200px 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Focus states */
+.focus-medical:focus {
+  outline: 2px solid hsl(var(--medical-green));
+  outline-offset: 2px;
+}
+
+/* Responsive 3D effects - reduce on mobile */
+@media (max-width: 768px) {
+  .card-3d:hover {
+    transform: perspective(1000px) rotateX(1deg) rotateY(-1deg) translateY(-4px);
+  }
+}
 
 /* AfriHealth Ledger Design System - Medical Professional with 3D Effects
 Strict black and green color scheme with transformative animations
